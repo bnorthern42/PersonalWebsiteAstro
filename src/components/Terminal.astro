@@ -1,0 +1,27 @@
+---
+---
+<div class="terminal border-accent/20" client:visible>
+  <script>
+    let input = '';
+    const output = document.createElement('div');
+    const form = document.createElement('form');
+    const prompt = document.createTextNode('$ ');
+    const inputEl = document.createElement('input');
+    inputEl.type = 'text';
+    inputEl.className = 'bg-transparent outline-none w-full text-green';
+    inputEl.autofocus = true;
+    form.append(prompt, inputEl);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      input = inputEl.value;
+      let res = '';
+      if (input === 'ls skills') res = 'C/C++ • Rust • Assembly • Kernel Modules • Node.js • Express • PostgreSQL';
+      else if (input === 'cat projects') res = 'Kernel IO Opt • Real-Time API • Assembly Engine';
+      else if (input === 'help') res = 'Commands: ls skills, cat projects';
+      else res = 'Command not found. Try "help".';
+      output.innerHTML += `<p>$ ${input}</p><p>${res}</p>`;
+      inputEl.value = '';
+    });
+    document.currentScript.parentElement.append(output, form);
+  </script>
+</div>

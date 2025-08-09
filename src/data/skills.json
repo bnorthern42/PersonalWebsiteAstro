@@ -1,0 +1,8 @@
+[
+  {"category": "Systems Programming", "skills": ["C/C++", "Rust", "Assembly (x86/ARM)", "Linux Kernel Modules", "Multithreading & Synchronization", "Embedded Systems Development", "OS Internals & Kernel Hacking", "Low-Level Optimization"]},
+  {"category": "Performance Optimization", "skills": ["Profiling Tools (perf, Valgrind)", "Memory Management", "Low-Level Debugging", "Cycle-Accurate Performance Tuning", "Hardware-Software Co-Design"]},
+  {"category": "Cybersecurity (Patent-Inspired)", "skills": ["Cyber Risk Assessment & Scoring", "Vulnerability Analysis", "Defensive Actions (ASLR, Process Isolation/Killing)", "Sensitivity Analysis in Security Systems", "Threat Modeling & Mitigation", "Secure Coding Practices"]},
+  {"category": "Backend Web Development", "skills": ["Node.js", "Express.js", "REST/GraphQL APIs", "SQL/NoSQL Databases (PostgreSQL, MongoDB)", "Authentication (JWT/OAuth)", "WebSockets for Real-Time", "Redis Caching", "Scalable API Design"]},
+  {"category": "Tools & DevOps", "skills": ["Git", "Docker", "CI/CD Pipelines", "AWS/GCP Deployment", "Linode VPS Management", "PM2 for Node Production"]},
+  {"category": "Other", "skills": ["Python for Scripting", "Astro.js (this site!)", "Embedded Systems", "Game Engine Prototyping", "Patent Development & Innovation"]}
+]

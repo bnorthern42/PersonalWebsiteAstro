@@ -1,0 +1,28 @@
+---
+// No server fetch here
+---
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in" id="projects-container">
+  <p class="text-secondary italic col-span-full">Loading projects...</p>
+</div>
+<script>
+  async function loadProjects() {
+    const response = await fetch('/api/projects.json');
+    const projects = await response.json();
+    const container = document.getElementById('projects-container');
+    container.innerHTML = '';
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'card hover:scale-105 transition-transform';
+      card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" class="rounded-t-lg h-40 object-cover" />
+        <h3 class="text-xl mb-2">${project.title}</h3>
+        <p class="text-secondary mb-4">${project.description}</p>
+        <div class="flex flex-wrap gap-2">
+          ${project.tech.map(t => `<span class="bg-accent/10 px-2 py-1 rounded text-xs">${t}</span>`).join('')}
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+  loadProjects();
+</script>

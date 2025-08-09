@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Terminal from '../components/Terminal.astro';
+import SkillList from '../components/SkillList.astro';
+import ProjectsList from '../components/ProjectsList.astro';
+import AchievementCard from '../components/AchievementCard.astro';
+---
+
+<Layout title="Brad Northern - Systems Programmer">
+  <main class="container mx-auto px-4">
+    <!-- Hero -->
+    <section id="home" class="min-h-screen flex items-center">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h1 class="text-5xl font-bold">Hey there! 👋 I'm Brad Northern</h1>
+          <p class="text-2xl text-secondary">Systems-Level Programmer | Backend Web Dev Enthusiast</p>
+          <p class="mt-4 text-lg text-secondary">Passionate about low-level optimization...</p>
+          <div class="flex gap-4 mt-6">
+            <button class="bg-accent px-6 py-3 rounded-full text-white">Resume</button>
+            <button class="bg-primary/20 px-6 py-3 rounded-full">Contact</button>
+          </div>
+          <div class="flex gap-4 mt-4">
+            <!-- Social icons -->
+          </div>
+        </div>
+        <div class="relative">
+          <img src="your-photo.png" alt="Brad Northern" class="rounded-full w-full h-auto" />
+          <!-- Add rotating skills circle like in HTML, use JS island -->
+          <div client:visible>
+            <script>
+              // JS for rotating icons (simplified)
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section animate-slide-in">
+      <h2 class="text-4xl mb-6">About Me</h2>
+      <p class="text-lg text-secondary">I'm always curious...</p>
+    </section>
+
+    <!-- Skills/Expertise -->
+    <section id="skills" class="section">
+      <h2 class="text-4xl mb-6">Expertise</h2>
+      <SkillList />
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <h2 class="text-4xl mb-6">Portfolio Showcase</h2>
+      <ProjectsList client:load />
+    </section>
+
+    <!-- Achievements/Patent (Timeline) -->
+    <section id="achievements" class="section">
+      <h2 class="text-4xl mb-6">Achievements & Patents</h2>
+      <div class="relative timeline-line">
+        <AchievementCard ... /> <!-- Repeat for each, with relative positioning -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2 class="text-4xl mb-6">Contact Me</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Name" class="w-full p-3 rounded-lg bg-card-bg" />
+        <input type="email" placeholder="Email" class="w-full p-3 rounded-lg bg-card-bg" />
+        <textarea placeholder="Message" class="w-full p-3 rounded-lg bg-card-bg"></textarea>
+        <button class="bg-accent px-6 py-3 rounded-full">Send</button>
+      </form>
+    </section>
+  </main>
+</Layout>
