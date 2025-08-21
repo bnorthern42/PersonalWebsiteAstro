@@ -1,0 +1,32 @@
+---
+import experience from "../data/experience";
+---
+
+<section id="experience" class="py-12 md:py-16">
+    <p class="section-kicker">Experience</p>
+    <h2 class="section-title mt-2">Work History</h2>
+
+    <div class="mt-6 space-y-8">
+        {experience.map((item) => (
+                <article class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                    <header class="md:col-span-8">
+                        <h3 class="text-lg font-semibold">
+                            {item.role} <span class="text-zinc-400">— {item.company}</span>
+                        </h3>
+                    </header>
+                    <div class="md:col-span-4 md:text-right text-zinc-400">
+                        {item.start} – {item.end}
+                    </div>
+
+                    <div class="md:col-span-12 text-zinc-300">
+                        {item.summary && <p class="mt-1">{item.summary}</p>}
+                        {item.bullets && item.bullets.length > 0 && (
+                                <ul class="mt-2 list-disc list-inside space-y-1">
+                                    {item.bullets.map((b) => <li>{b}</li>)}
+                                </ul>
+                        )}
+                    </div>
+                </article>
+        ))}
+    </div>
+</section>

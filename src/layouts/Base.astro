@@ -1,0 +1,60 @@
+---
+import "../styles/globals.css";
+const { title = "Brad Northern — Portfolio", description = "HPC • C++ • Java • Backend • Swing trader • Maker", page = "" } = Astro.props;
+---
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="/gfonts.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVHYG4V6BT"></script>
+    <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RVHYG4V6BT');
+    </script>
+
+    </head>
+<body class="min-h-full bg-zinc-950 text-zinc-100 bg-radial-fade">
+
+
+
+<header class="sticky top-0 z-50 backdrop-blur border-b border-white/5">
+    <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+        <a href="/" class="font-extrabold tracking-tight">BN<span class="text-accent-400">.</span></a>
+        <ul class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
+            <li><a href="#about" class="hover:text-white">About</a></li>
+            <li><a href="#expertise" class="hover:text-white">Expertise</a></li>
+            <li><a href="#projects" class="hover:text-white">Projects</a></li>
+            <li><a href="#education" class="hover:text-white">Education</a></li>
+            <li><a href="#experience" class="hover:text-white">Experience</a></li>
+            <li><a href="#contact" class="hover:text-white">Contact</a></li>
+            <li><a href="/snippets/" >Snips</a></li>
+        </ul>
+        <a href="https://github.com/bnorthern42" class="text-sm px-3 py-1.5 rounded-md bg-accent-500/10 text-accent-300 hover:bg-accent-500/20 border border-accent-500/20">GitHub</a>
+    </nav>
+</header>
+
+<main class="mx-auto max-w-6xl px-4">
+    <slot />
+</main>
+
+<footer class="mt-16 border-t border-white/5">
+    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-400 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p>© {new Date().getFullYear()} Brad Northern. All rights reserved.</p>
+        <div class="flex gap-4">
+            <a class="hover:text-white" href="https://www.linkedin.com/in/brad-northern">LinkedIn</a>
+            <a class="hover:text-white" href="https://github.com/bnorthern42">GitHub</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

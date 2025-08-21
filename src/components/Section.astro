@@ -1,0 +1,10 @@
+---
+const { id, kicker, title } = Astro.props as { id?: string; kicker?: string; title?: string };
+---
+<section id={id} class="py-12 md:py-16">
+    {kicker && <p class="section-kicker">{kicker}</p>}
+    {title && <h2 class="section-title mt-2">{title}</h2>}
+    <div class="mt-6">
+        <slot />
+    </div>
+</section>

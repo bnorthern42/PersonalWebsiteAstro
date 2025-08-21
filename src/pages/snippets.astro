@@ -1,0 +1,67 @@
+---
+import snippets from "../data/snippets.ts"; // or .ts export default [...]
+const title = "Snippets";
+const intro = "Copy-ready commands & samples.";
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        :root{
+            --bg:#0b0f17; --panel:#0f1522; --border:#1e2636; --text:#e6ebf5; --muted:#a6b0c3;
+        }
+        body{margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui, Inter, Arial}
+        .hero{max-width:1100px; margin:60px auto 10px; padding:0 20px}
+        .hero h1{margin:0 0 6px; font-size:clamp(2rem,3.6vw,3rem)}
+        .hero p{color:var(--muted); margin:0}
+        .wrap{max-width:1100px; margin:20px auto 80px; padding:0 20px; display:grid; gap:18px}
+        .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+            border:1px solid var(--border); border-radius:16px; padding:18px}
+        .card-head{display:flex; align-items:center; gap:12px; justify-content:space-between; margin:-4px 0 6px}
+        .card h2{margin:0; font-size:1.05rem}
+        .card p{margin:.15rem 0 .7rem; color:var(--muted)}
+        .copy-btn{padding:.3rem .6rem; font-size:.75rem; line-height:1; cursor:pointer;
+            border:1px solid var(--border); border-radius:8px; background:#0b1220; color:#e6ebf5; opacity:.9}
+        .copy-btn:hover{opacity:1}
+        pre{background:#0c111b; border:1px solid var(--border); border-radius:12px; padding:14px; overflow:auto; margin:0}
+        code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    </style>
+</head>
+<body>
+<header class="hero">
+    <h1>{title}</h1>
+    <p>{intro}</p>
+</header>
+
+<main class="wrap">
+    {snippets.map((s) => (
+            <section class="card" id={s.id}>
+                <div class="card-head">
+                    <h2>{s.title}</h2>
+                    <button class="copy-btn" data-target={s.id}>Copy</button>
+                </div>
+                {s.description && <p>{s.description}</p>}
+                <pre><code class={`language-${s.language}`}>{s.code}</code></pre>
+            </section>
+        ))}
+        </main>
+
+        <script>
+            // copy the code from the section whose id matches data-target
+            document.addEventListener('click', async (e) => {
+                const btn = e.target.closest('.copy-btn');
+                if (!btn) return;
+                const section = document.getElementById(btn.dataset.target);
+                const code = section?.querySelector('pre > code')?.innerText || '';
+                try {
+                    await navigator.clipboard.writeText(code);
+                    const old = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => (btn.textContent = old), 1200);
+                } catch {}
+            });
+            </script>
+        </body>
+        </html>

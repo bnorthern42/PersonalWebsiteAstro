@@ -1,0 +1,23 @@
+[
+  {
+    "id": "openmpi-install-arch",
+    "title": "Install OpenMPI (Arch)",
+    "language": "bash",
+    "description": "One-liner for Arch/Manjaro.",
+    "code": "sudo pacman -S openmpi"
+  },
+  {
+    "id": "hello-mpi",
+    "title": "Hello MPI (C++)",
+    "language": "cpp",
+    "description": "Minimal C++ hello for MPI.",
+    "code": "#include <mpi.h>\n#include <cstdio>\nint main(int argc, char** argv){\n  MPI_Init(&argc,&argv);\n  int r,s; MPI_Comm_rank(MPI_COMM_WORLD,&r); MPI_Comm_size(MPI_COMM_WORLD,&s);\n  std::printf(\"Hello from %d/%d\\n\", r, s);\n  MPI_Finalize();\n}"
+  },
+  {
+    "id": "compile-run",
+    "title": "Compile & Run",
+    "language": "bash",
+    "description": "Build and execute.",
+    "code": "mpic++ -O3 -std=c++17 hello-mpi.cpp -o hello && mpirun -np 4 ./hello"
+  }
+]

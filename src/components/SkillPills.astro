@@ -1,0 +1,16 @@
+---
+const skills: string[] = [
+    "C++ (OpenMP/OpenMPI)", "Java (Spring Boot)", "Node.js",
+     "Linux: Arch, SUSE, RHEL, Debian", "HPC & Meshing (Gmsh/GetDP)",
+    "TradingView Pine", "Postgres", "Docker"
+];
+---
+<section id="expertise" class="py-12 md:py-16">
+    <p class="section-kicker">Expertise</p>
+    <h2 class="section-title mt-2">Turning ideas into performant systems</h2>
+    <div class="mt-6 flex flex-wrap gap-2">
+        {skills.map(s => (
+                <span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm text-zinc-300">{s}</span>
+        ))}
+    </div>
+</section>

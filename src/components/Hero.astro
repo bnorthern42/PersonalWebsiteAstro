@@ -1,0 +1,40 @@
+---
+const CTA_PRIMARY = "View Projects";
+const CTA_SECONDARY = "Download CV";
+---
+<section class="pt-14 md:pt-24 pb-12 md:pb-20">
+    <div class="grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7">
+            <p class="section-kicker">Hey there 👋</p>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mt-2">
+                I’m Brad
+            </h1>
+            <h2 class="text-2xl md:text-2xl font-extrabold tracking-tight mt-2">
+                HPC dev, C++/Java enjoyer, and builder of fast things.</h2>
+            <div id="aboutHero">
+                <div class="hometown">Cookeville, TN></div>
+
+
+            </div>
+            <p class="mt-4 text-zinc-300 max-w-2xl">
+                I design & ship systems across HPC clusters, backend services, and tools that make engineers’ lives better.
+                When I’m not optimizing memory layouts, I’m swing trading or tinkering with game tech.
+            </p>
+            <div class="mt-6 flex gap-3">
+                <a href="#projects" class="px-5 py-3 rounded-xl bg-accent-500 text-zinc-950 font-semibold hover:bg-accent-400">{CTA_PRIMARY}</a>
+                <a href="/Documents/Bnorthern25_resume.pdf" class="px-5 py-3 rounded-xl border border-white/10 hover:border-white/20"> {CTA_SECONDARY}</a>
+            </div>
+        </div>
+        <div class="md:col-span-5">
+            <div class="card p-6">
+        <pre class="text-xs md:text-sm font-mono leading-relaxed text-zinc-200 overflow-auto">
+$ cat kitpp/README.md
+A reusable C++ utility library for real work.
+- Built for clusters
+- Zero fluff, just speed
+- Batteries included (sane defaults)
+        </pre>
+            </div>
+        </div>
+    </div>
+</section>

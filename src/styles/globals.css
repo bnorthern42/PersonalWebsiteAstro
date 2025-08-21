@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* smooth scrolling + nicer selection */
+:root { scroll-behavior: smooth; }
+::selection { background: rgba(6,182,212,.25); }
+
+/* section title underline */
+.section-title {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+}
+.section-kicker {
+  @apply text-accent-500 font-medium uppercase text-sm tracking-widest;
+}
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur shadow-soft;
+}
+#aboutHero .hometown  {
+    content: '';
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    background-image: url("/images/journey_location_map_navigation_paper_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 0.5em -0.25em -1em;
+
+}
