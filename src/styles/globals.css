@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root { color-scheme: dark; }
+    html { font-size: 18px; } /* makes 100% zoom feel closer to your preferred 150% */
+    body {
+        @apply bg-bg text-text antialiased;
+        background:
+                radial-gradient(1200px 800px at 10% -10%, #111620 0%, #0b0d12 60%),
+                linear-gradient(180deg, #0b0d12 0%, #0a0d13 100%),
+                theme('backgroundImage.radial-fade');
+    }
+    a { @apply text-accent-300 hover:text-accent-200 transition; }
+}
+
+@layer utilities {
+    .section { @apply py-16 lg:py-20; }
+    .heading-grad {
+        @apply bg-clip-text text-transparent;
+        background-image: linear-gradient(90deg, #e6e9ef, theme(colors.accent.400));
+    }
+}
 /* smooth scrolling + nicer selection */
 :root { scroll-behavior: smooth; }
 ::selection { background: rgba(6,182,212,.25); }
@@ -21,9 +41,10 @@
     display: inline-block;
     height: 1em;
     width: 1em;
-    background-image: url("/images/journey_location_map_navigation_paper_icon.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0 0.5em -0.25em -1em;
 
 }
+
+

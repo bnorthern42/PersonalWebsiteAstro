@@ -11,14 +11,16 @@ import Experience from "../components/Experience.astro";
 ---
 <Base title="Brad Northern — Portfolio">
   <Hero />
-
+<div class="ml-6">
   <Section id="about" kicker="About" title="Curiosity + throughput">
-    <div class="prose prose-invert max-w-none">
+    <div class="prose prose-invert max-w-none ">
       <p>
-        I’m a systems-minded engineer who cares about correctness and latency in equal measure.
-        Background across HPC, backend, and a bit of game tech. Current obsessions: better meshes, better logs, better knobs.
+          I specialize in building systems that bridge high-performance computing and modern software engineering. My work spans distributed simulations, backend services, and developer tools—always with a focus on performance, scalability, and improving engineering workflows.
+
+          I’ve optimized memory layouts for large-scale simulations, developed backend services that handle real-world complexity, and created tools that streamline day-to-day tasks for engineers. Beyond my professional work, I bring the same analytical mindset to swing trading and explore new ideas through game tech projects.
       </p>
     </div>
+
   </Section>
 
   <SkillPills />
@@ -45,4 +47,5 @@ import Experience from "../components/Experience.astro";
       </a>
     </div>
   </Section>
+</div>
 </Base>

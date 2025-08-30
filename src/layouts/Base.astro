@@ -1,15 +1,17 @@
 ---
 import "../styles/globals.css";
+import "../styles/fancy.css";
 const { title = "Brad Northern — Portfolio", description = "HPC • C++ • Java • Backend • Swing trader • Maker", page = "" } = Astro.props;
 ---
 <html lang="en" class="h-full">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="/gfonts.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" />
     <title>{title}</title>
 
@@ -23,7 +25,7 @@ const { title = "Brad Northern — Portfolio", description = "HPC • C++ • Ja
     </script>
 
     </head>
-<body class="min-h-full bg-zinc-950 text-zinc-100 bg-radial-fade">
+<body class="min-h-full bg-zinc-950 text-zinc-100 bg-radial-fade font-sans">
 
 
 
@@ -37,7 +39,7 @@ const { title = "Brad Northern — Portfolio", description = "HPC • C++ • Ja
             <li><a href="#education" class="hover:text-white">Education</a></li>
             <li><a href="#experience" class="hover:text-white">Experience</a></li>
             <li><a href="#contact" class="hover:text-white">Contact</a></li>
-            <li><a href="/snippets/" >Snips</a></li>
+            <li><a href="/snippets/" >Dev Page</a></li>
         </ul>
         <a href="https://github.com/bnorthern42" class="text-sm px-3 py-1.5 rounded-md bg-accent-500/10 text-accent-300 hover:bg-accent-500/20 border border-accent-500/20">GitHub</a>
     </nav>
