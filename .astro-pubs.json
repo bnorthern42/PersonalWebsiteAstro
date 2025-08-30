@@ -1,0 +1,129 @@
+[
+  {
+    "id": "ulybyshev2020protecting",
+    "title": "Protecting electronic health records in transit and at rest",
+    "authors": [
+      "Denis Ulybyshev",
+      "Christian Bare",
+      "Kristen Bellisario",
+      "Vadim Kholodilo",
+      "Bradley Northern",
+      "Abhijeet Solanki",
+      "Timothy O'Donnell"
+    ],
+    "year": 2020,
+    "venue": "2020 IEEE 33rd International Symposium on Computer-Based Medical Systems (CBMS)",
+    "doi": "",
+    "url": "",
+    "type": "paper-conference"
+  },
+  {
+    "id": "ulybyshev2021trustworthy",
+    "title": "Trustworthy data analysis and sensor data protection in cyber-physical systems",
+    "authors": [
+      "Denis Ulybyshev",
+      "Ibrahim Yilmaz",
+      "Bradley Northern",
+      "Vadim Kholodilo",
+      "Michael Rogers"
+    ],
+    "year": 2021,
+    "venue": "Proceedings of the 2021 ACM Workshop on Secure and Trustworthy Cyber-Physical Systems",
+    "doi": "",
+    "url": "",
+    "type": "paper-conference"
+  },
+  {
+    "id": "northern2021vercasm",
+    "title": "Vercasm-cps: Vulnerability analysis and cyber risk assessment for cyber-physical systems",
+    "authors": [
+      "Bradley Northern",
+      "Trey Burks",
+      "Marlana Hatcher",
+      "Michael Rogers",
+      "Denis Ulybyshev"
+    ],
+    "year": 2021,
+    "venue": "Information",
+    "doi": "",
+    "url": "",
+    "type": "article-journal"
+  },
+  {
+    "id": "burks2021quasi",
+    "title": "Quasi-wireless capacitive power transfer with secure data acquisition for robotic systems in space infrastructure",
+    "authors": [
+      "Trey Burks",
+      "Glen Cathey",
+      "Vadim Kholodilo",
+      "D Ulybyshev",
+      "Matthew Pearce",
+      "Tyler Marcrum",
+      "M Coultis",
+      "C Van Neste",
+      "Bradley Northern",
+      "Maanak Gupta",
+      "others"
+    ],
+    "year": 2021,
+    "venue": "2021 IEEE International Conference on Wireless for Space and Extreme Environments (WiSEE)",
+    "doi": "",
+    "url": "",
+    "type": "paper-conference"
+  },
+  {
+    "id": "ujiie2022secure",
+    "title": "Secure Monitoring and Notification System for Cloud Infrastructures",
+    "authors": [
+      "Rumi Ujiie",
+      "Vadim Kholodilo",
+      "Bradley Northern",
+      "Denis Ulybyshev"
+    ],
+    "year": 2022,
+    "venue": "SoutheastCon 2022",
+    "doi": "",
+    "url": "",
+    "type": "paper-conference"
+  },
+  {
+    "id": "northern2022building",
+    "title": "Building secure environments for microservices",
+    "authors": [
+      "Bradley Northern",
+      "Denis Ulybyshev"
+    ],
+    "year": 2022,
+    "venue": "2022 International Workshop on Secure and Reliable Microservices and Containers (SRMC)",
+    "doi": "",
+    "url": "",
+    "type": "paper-conference"
+  },
+  {
+    "id": "ulybyshev2023end",
+    "title": "End-to-end database software security",
+    "authors": [
+      "Denis Ulybyshev",
+      "Michael Rogers",
+      "Vadim Kholodilo",
+      "Bradley Northern"
+    ],
+    "year": 2023,
+    "venue": "Software",
+    "doi": "",
+    "url": "",
+    "type": "article-journal"
+  },
+  {
+    "id": "northern2022vulnerability",
+    "title": "Vulnerability analysis and cyber risk assessment",
+    "authors": [
+      "Bradley A Northern"
+    ],
+    "year": 2022,
+    "venue": "Tennessee Technological University",
+    "doi": "",
+    "url": "",
+    "type": "thesis"
+  }
+]

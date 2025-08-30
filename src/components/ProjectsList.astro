@@ -1,28 +1,98 @@
 ---
 // No server fetch here
 ---
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in" id="projects-container">
-  <p class="text-secondary italic col-span-full">Loading projects...</p>
-</div>
-<script>
-  async function loadProjects() {
-    const response = await fetch('/api/projects.json');
-    const projects = await response.json();
-    const container = document.getElementById('projects-container');
-    container.innerHTML = '';
-    projects.forEach(project => {
-      const card = document.createElement('div');
-      card.className = 'card hover:scale-105 transition-transform';
-      card.innerHTML = `
-        <img src="${project.image}" alt="${project.title}" class="rounded-t-lg h-40 object-cover" />
-        <h3 class="text-xl mb-2">${project.title}</h3>
-        <p class="text-secondary mb-4">${project.description}</p>
-        <div class="flex flex-wrap gap-2">
-          ${project.tech.map(t => `<span class="bg-accent/10 px-2 py-1 rounded text-xs">${t}</span>`).join('')}
+<section id="projects" class="section scroll-mt-24">
+    <div class="container">
+        <p class="text-sm uppercase tracking-wide font-medium text-accent-300/90">Portfolio Showcase</p>
+        <h2 class="heading-grad text-2xl md:text-3xl font-bold mt-2">Featured Projects</h2>
+
+        <div
+                id="projects-container"
+                class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8"
+                aria-live="polite"
+                aria-busy="true"
+        >
+            <!-- skeletons -->
+            {Array.from({ length: 6 }).map((_, i) => (
+                    <div class="rounded-2xl border border-white/10 bg-[#10131a]/80 p-4 animate-pulse">
+                        <div class="aspect-video rounded-lg bg-white/5" />
+                        <div class="h-5 w-2/3 bg-white/10 rounded mt-4" />
+                        <div class="h-4 w-full bg-white/5 rounded mt-2" />
+                        <div class="flex gap-2 mt-4">
+                            <div class="h-6 w-16 bg-accent-500/20 rounded" />
+                            <div class="h-6 w-12 bg-accent-500/10 rounded" />
+                        </div>
+                    </div>
+            ))}
         </div>
-      `;
-      container.appendChild(card);
-    });
-  }
-  loadProjects();
+
+        <noscript>
+            <p class="text-zinc-300 mt-4">Enable JavaScript to load projects.</p>
+        </noscript>
+
+        <p id="projects-error" class="hidden mt-4 text-red-300/90"></p>
+    </div>
+</section>
+
+<script>
+    const container = document.getElementById('projects-container');
+    const errEl = document.getElementById('projects-error');
+
+    const badge = (t) =>
+        `<span class="px-2 py-1 rounded-md bg-accent-500/10 text-accent-300 text-xs border border-accent-500/20">${t}</span>`;
+
+    const link = (href, label) =>
+        href
+            ? `<a class="text-sm underline hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-400/70 rounded px-1"
+            href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`
+            : "";
+
+    function cardHTML(p) {
+        const demo = link(p.demo, "Demo");
+        const source = link(p.source, "Source");
+        return `
+      <article class="group rounded-2xl border border-white/10 bg-[#10131a]/90 overflow-hidden transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,.35)] hover:border-accent-400/50">
+        <a href="${p.demo || p.source || '#'}" ${p.demo || p.source ? 'target="_blank" rel="noopener noreferrer"' : ""} class="block focus:outline-none">
+                <div class="aspect-[16/10] overflow-hidden rounded-t-xl bg-zinc-900">
+                  <img
+                    src={p.image}
+                    alt={\`${p.title} preview\`}
+                    loading="lazy"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+          <div class="p-3">
+            <h3 class="text-lg font-semibold">${p.title}</h3>
+            <p class="mt-1 text-sm text-zinc-300">${p.description}</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              ${Array.isArray(p.tech || p.stack) ? (p.tech || p.stack).map(badge).join('') : ''}
+            </div>
+            <div class="mt-4 flex gap-3">
+              ${source} ${demo}
+            </div>
+          </div>
+        </a>
+      </article>
+    `;
+    }
+
+    async function loadProjects() {
+        try {
+            const res = await fetch('/api/projects.json', { cache: 'no-store' });
+            if (!res.ok) throw new Error('Failed to load projects.');
+            const projects = await res.json();
+            if (!Array.isArray(projects) || projects.length === 0) {
+                container.innerHTML = '<p class="text-zinc-400 italic col-span-full">No projects to show (yet).</p>';
+                container.setAttribute('aria-busy', 'false');
+                return;
+            }
+            container.innerHTML = projects.map(cardHTML).join('');
+        } catch (e) {
+            errEl.textContent = 'Could not load projects right now. Please try again later.';
+            errEl.classList.remove('hidden');
+        } finally {
+            container.setAttribute('aria-busy', 'false');
+        }
+    }
+    loadProjects();
 </script>

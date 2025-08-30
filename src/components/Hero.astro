@@ -2,45 +2,71 @@
 const CTA_PRIMARY = "View Projects";
 const CTA_SECONDARY = "Download CV";
 ---
-<section class="pt-14 md:pt-24 pb-12 md:pb-20">
-    <div class="grid md:grid-cols-12 gap-8 items-center ">
-        <div class="md:col-span-7 ml-8 mr-8">
-            <p class="section-kicker">Hey there
-                <span class="wave" role="img" aria-label="waving hand">👋🏻</span>
-            </p>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mt-3">
-                I’m Brad
-            </h1>
-            <h2 class="text-2xl md:text-2xl font-extrabold tracking-tight mt-3">
-                HPC dev, C++/Java enjoyer, and builder of fast things.</h2>
+<section class="relative overflow-hidden">
+    {/* subtle top grid glow */}
+    <div class="pointer-events-none absolute inset-x-0 -top-10 h-56 opacity-60 [mask-image:linear-gradient(180deg,white,transparent)]">
+        <div class="h-full w-full bg-[repeating-linear-gradient(90deg,#0f131b_0_2px,transparent_2px_24px)]"></div>
+    </div>
 
-            <p class="mt-4 text-zinc-300 max-w-2xl mt-12" >
-                I design and ship high-performance systems across HPC clusters, backend services,
-                and developer tools that scale efficiently and make engineers’ lives easier.
-            </p>
-            <div class="mt-9 flex gap-4">
-                <div class="cardPanel p-6">
-                        <span class="text-xs md:text-sm font-mono underline underline-offset-2">Featured Information</span>
-                    <span class="">
-                        <p class="text-xs md:text-base font-mono leading-relaxed text-zinc-200 overflow-auto topSub">For Devs:</p>
-                        <a href="#projects" class="px-5 py-3 rounded-xl border button "><span class="cap">{CTA_PRIMARY}</span></a>
-                    </span>
-                    <span class="">
-                        <p class="text-xs md:text-base font-mono leading-relaxed text-zinc-200 overflow-auto topSub">For HR:</p>
-                        <a href="/Documents/Bnorthern25_resume.pdf" class="px-5 py-3 rounded-xl border button"><span class="cap">{CTA_SECONDARY}</span> </a>
-                    </span>
+    <div class="container pt-16 md:pt-24 pb-14 md:pb-20">
+        <div class="grid gap-10 md:gap-12 md:grid-cols-12 items-center">
+            {/* LEFT */}
+            <div class="md:col-span-7">
+                <p class="text-sm text-accent-300/90 font-medium">
+                    Hey there <span class="inline-block wave origin-[70%_70%]">👋🏻</span>
+                </p>
+
+                <h1 class="mt-3 font-extrabold tracking-tight text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1.1]">
+                    I’m Brad
+                </h1>
+
+                <h2 class="mt-2 font-bold tracking-tight text-[clamp(1.25rem,2.2vw,1.75rem)] bg-clip-text text-transparent bg-gradient-to-r from-white to-accent-400">
+                    HPC dev, C++/Java enjoyer, and builder of fast things.
+                </h2>
+
+                <p class="mt-5 md:mt-6 max-w-2xl text-[0.98rem] leading-relaxed text-zinc-300">
+                    I design and ship high-performance systems across HPC clusters, backend services,
+                    and developer tools that scale efficiently and make engineers’ lives easier.
+                </p>
+
+                {/* CTAs */}
+                <div class="mt-7 flex flex-wrap gap-3">
+                    <a href="#projects"
+                       class="inline-flex items-center rounded-xl bg-accent-500 text-black px-4 py-2.5 font-semibold shadow-soft hover:shadow-[0_20px_50px_rgba(0,0,0,.35)] hover:-translate-y-0.5 transition">
+                        {CTA_PRIMARY}
+                    </a>
+                    <a href="/Documents/Bnorthern25_resume.pdf"
+                       class="inline-flex items-center rounded-xl border border-white/15 px-4 py-2.5 font-semibold text-zinc-100/90 hover:text-zinc-100 hover:border-accent-400/60 transition">
+                        {CTA_SECONDARY}
+                    </a>
+                </div>
+
+                {/* Tech chips (optional but adds texture) */}
+                <div class="mt-5 flex flex-wrap gap-2">
+                    {["OpenMP / OpenMPI","Spring Boot","PostgreSQL","Linux • Arch/RHEL/SUSE"].map((b) => (
+                            <span class="px-3 py-1 rounded-full text-sm text-zinc-300 border border-white/10 bg-[#0f131b]">
+              {b}
+            </span>
+                    ))}
                 </div>
             </div>
-        </div>
-        <div class="md:col-span-5 ml-2 mr-2 -mt-10">
-            <div class="card p-5">
-        <pre class="text-xs md:text-sm font-mono leading-relaxed text-zinc-200 overflow-auto">
+
+            {/* RIGHT: code card */}
+            <div class="md:col-span-12 mt-6">
+                <div class="rounded-xl border border-white/10 bg-[#10131a]/90 p-5 overflow-x-auto">
+                    <div class="flex items-center gap-1 mb-3">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                    <pre class="text-sm md:text-base font-mono leading-relaxed text-zinc-200">
 $ cat kitpp/README.md
 A reusable C++ utility library for real work.
 - Built for clusters
 - Zero fluff, just speed
 - Batteries included (sane defaults)
-        </pre>
+    </pre>
+                </div>
             </div>
         </div>
     </div>

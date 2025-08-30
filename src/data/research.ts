@@ -11,12 +11,7 @@ export const profiles = [
 ];
 
 export const patents = [
-    {
-        title: "VERCASM-CPS: Vulnerability Analysis and Cyber Risk Assessment for Cyber-Physical Systems ",
-        venue: "MDPI",
-        year: 2021,
-        link: "https://www.mdpi.com/2078-2489/12/10/408",
-    },
+
     {
         title: "Patent Pending: Systems and methods for cyber risk assessment for computing systems",
         venue: "USPTO Application No. 18/149,583",

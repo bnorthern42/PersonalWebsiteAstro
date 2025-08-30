@@ -1,16 +1,36 @@
 ---
 const skills: string[] = [
-    "C++ (OpenMP/OpenMPI)", "Java (Spring Boot)", "Node.js",
-     "Linux: Arch, SUSE, RHEL, Debian", "HPC & Meshing (Gmsh/GetDP)",
-    "TradingView Pine", "Postgres", "Docker"
+    "C++ (OpenMP/OpenMPI)",
+    "Java (Spring Boot)",
+    "Node.js",
+    "Linux • Arch, SUSE, RHEL, Debian",
+    "HPC & Meshing (Gmsh/GetDP)",
+    "TradingView PineScript",
+    "Postgres",
+    "MySQL",
+    "MongoDB",
+    "Docker",
 ];
 ---
-<section id="expertise" class="py-12 md:py-16">
-    <p class="section-kicker">Expertise</p>
-    <h2 class="section-title mt-2">Turning ideas into performant systems</h2>
-    <div class="mt-6 flex flex-wrap gap-2">
-        {skills.map(s => (
-                <span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm text-zinc-300">{s}</span>
-        ))}
+<section id="expertise" class="section scroll-mt-24">
+    <div class="container">
+        <p class="text-sm uppercase tracking-wide font-medium text-accent-300/90">
+            Expertise
+        </p>
+        <h2 class="heading-grad text-2xl md:text-3xl font-bold mt-2">
+            Turning ideas into performant systems
+        </h2>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+            {skills.map((s) => (
+                    <span
+                            class="px-3.5 py-1.5 rounded-full border border-white/10
+                 bg-[#0f131b] text-sm text-zinc-300 shadow-sm
+                 hover:border-accent-400/50 hover:text-accent-200 transition"
+                    >
+          {s}
+        </span>
+            ))}
+        </div>
     </div>
 </section>

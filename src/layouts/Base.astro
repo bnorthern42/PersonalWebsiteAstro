@@ -1,56 +1,100 @@
 ---
 import "../styles/globals.css";
 import "../styles/fancy.css";
-const { title = "Brad Northern — Portfolio", description = "HPC • C++ • Java • Backend • Swing trader • Maker", page = "" } = Astro.props;
+const {
+    title = "Brad Northern — Portfolio",
+    description = "HPC • C++ • Java • Backend • Swing trader • Maker",
+    page = "",
+} = Astro.props;
 ---
-<html lang="en" class="h-full">
+<html lang="en" class="h-full scroll-smooth">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#0b0d12" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" />
-    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVHYG4V6BT"></script>
     <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RVHYG4V6BT');
+    gtag('js', new Date()); gtag('config', 'G-RVHYG4V6BT');
     </script>
-
     </head>
+
 <body class="min-h-full bg-zinc-950 text-zinc-100 bg-radial-fade font-sans">
+<!-- Skip link -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] rounded-md bg-black/80 px-3 py-2 text-sm ring-2 ring-accent-400/70">
+    Skip to content
+</a>
 
+<!-- Header -->
+<header id="site-header" class="sticky top-0 z-50 backdrop-blur border-b border-white/5 bg-black/30 supports-[backdrop-filter]:bg-black/20">
+    <nav class="container px-4 py-3 flex items-center justify-between">
+        <a href="/" class="font-extrabold tracking-tight text-lg">
+            BN<span class="text-accent-400">.</span>
+        </a>
 
-
-<header class="sticky top-0 z-50 backdrop-blur border-b border-white/5">
-    <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <a href="/" class="font-extrabold tracking-tight">BN<span class="text-accent-400">.</span></a>
+        <!-- Desktop nav -->
         <ul class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
-            <li><a href="#about" class="hover:text-white">About</a></li>
-            <li><a href="#expertise" class="hover:text-white">Expertise</a></li>
-            <li><a href="#projects" class="hover:text-white">Projects</a></li>
-            <li><a href="#education" class="hover:text-white">Education</a></li>
-            <li><a href="#experience" class="hover:text-white">Experience</a></li>
-            <li><a href="#contact" class="hover:text-white">Contact</a></li>
-            <li><a href="/snippets/" >Dev Page</a></li>
+            <li><a data-nav="#about"      href="#about"      class="navlink hover:text-white">About</a></li>
+            <li><a data-nav="#expertise"  href="#expertise"  class="navlink hover:text-white">Expertise</a></li>
+            <li><a data-nav="#projects"   href="#projects"   class="navlink hover:text-white">Projects</a></li>
+            <li><a data-nav="#education"  href="#education"  class="navlink hover:text-white">Education</a></li>
+            <li><a data-nav="#experience" href="#experience" class="navlink hover:text-white">Experience</a></li>
+            <li><a data-nav="#contact"    href="#contact"    class="navlink hover:text-white">Contact</a></li>
+            <li><a href="/snippets/" class="hover:text-white">Dev Page</a></li>
         </ul>
-        <a href="https://github.com/bnorthern42" class="text-sm px-3 py-1.5 rounded-md bg-accent-500/10 text-accent-300 hover:bg-accent-500/20 border border-accent-500/20">GitHub</a>
+
+        <div class="flex items-center gap-2">
+            <a href="https://github.com/bnorthern42"
+               class="hidden md:inline-block text-sm px-3 py-1.5 rounded-md bg-accent-500/10 text-accent-300 hover:bg-accent-500/20 border border-accent-500/20">
+                GitHub
+            </a>
+
+            <!-- Mobile menu button -->
+            <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 border border-white/10 hover:border-white/20"
+                    aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile nav -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/5 bg-black/60">
+        <ul class="container px-4 py-3 grid gap-2 text-sm">
+            <li><a href="#about"      class="mobilelink">About</a></li>
+            <li><a href="#expertise"  class="mobilelink">Expertise</a></li>
+            <li><a href="#projects"   class="mobilelink">Projects</a></li>
+            <li><a href="#education"  class="mobilelink">Education</a></li>
+            <li><a href="#experience" class="mobilelink">Experience</a></li>
+            <li><a href="#contact"    class="mobilelink">Contact</a></li>
+            <li><a href="/snippets/"  class="mobilelink">Dev Page</a></li>
+            <li><a href="https://github.com/bnorthern42" class="mobilelink">GitHub</a></li>
+        </ul>
+    </div>
 </header>
 
-<main class="mx-auto max-w-6xl px-4">
-    <slot />
+<!-- Main -->
+<main id="main" class="container px-4">
+<slot />
 </main>
 
+<!-- Footer -->
 <footer class="mt-16 border-t border-white/5">
-    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-400 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="container px-4 py-10 text-sm text-zinc-400 flex flex-col md:flex-row items-center justify-between gap-4">
         <p>© {new Date().getFullYear()} Brad Northern. All rights reserved.</p>
         <div class="flex gap-4">
             <a class="hover:text-white" href="https://www.linkedin.com/in/brad-northern">LinkedIn</a>
@@ -58,5 +102,56 @@ const { title = "Brad Northern — Portfolio", description = "HPC • C++ • Ja
         </div>
     </div>
 </footer>
+
+<!-- Small UX script: active link + header shadow + mobile menu -->
+<script is:inline>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            const open = menu.classList.toggle('hidden') === false;
+            btn.setAttribute('aria-expanded', String(open));
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false');
+        }));
+    }
+
+    // Active section highlighting
+    const links = Array.from(document.querySelectorAll('.navlink'));
+    const map = new Map(links.map(l => [l.getAttribute('data-nav'), l]));
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            const id = '#' + e.target.id;
+            const link = map.get(id);
+            if (!link) return;
+            if (e.isIntersecting) {
+                links.forEach(x => x.classList.remove('text-white','after:w-full'));
+                link.classList.add('text-white');
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+    ['about','expertise','projects','education','experience','contact']
+        .forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+
+    // Header subtle shadow when scrolling
+    const header = document.getElementById('site-header');
+    let last = 0;
+    addEventListener('scroll', () => {
+        const y = window.scrollY || 0;
+        if (y > 6 && last <= 6) header.classList.add('shadow-[0_10px_30px_-10px_rgba(0,0,0,0.35)]');
+        if (y <= 6 && last > 6) header.classList.remove('shadow-[0_10px_30px_-10px_rgba(0,0,0,0.35)]');
+        last = y;
+    }, { passive: true });
+</script>
+
+<!-- Respect reduced motion -->
+<style>
+    @media (prefers-reduced-motion: reduce) {
+        * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+</style>
 </body>
 </html>

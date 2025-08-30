@@ -6,46 +6,125 @@ import ProjectsGrid from "../components/ProjectsGrid.astro";
 import Section from "../components/Section.astro";
 import ResearchProfiles from "../components/ResearchProfiles.astro";
 import Education from "../components/Education.astro";
-
 import Experience from "../components/Experience.astro";
+
+
 ---
+
 <Base title="Brad Northern — Portfolio">
-  <Hero />
-<div class="ml-6">
-  <Section id="about" kicker="About" title="Curiosity + throughput">
-    <div class="prose prose-invert max-w-none ">
-      <p>
-          I specialize in building systems that bridge high-performance computing and modern software engineering. My work spans distributed simulations, backend services, and developer tools—always with a focus on performance, scalability, and improving engineering workflows.
+    <Hero />
 
-          I’ve optimized memory layouts for large-scale simulations, developed backend services that handle real-world complexity, and created tools that streamline day-to-day tasks for engineers. Beyond my professional work, I bring the same analytical mindset to swing trading and explore new ideas through game tech projects.
-      </p>
+    {/* ABOUT */}
+    <Section id="about" kicker="About" title="Curiosity + throughput" class="scroll-mt-24">
+        <div class="container">
+            <div class="prose prose-invert max-w-3xl text-[1.02rem] leading-relaxed">
+                <p>
+                    I specialize in building systems that bridge high-performance computing and modern software engineering.
+                    My work spans distributed simulations, backend services, and developer tools—always with a focus on
+                    performance, scalability, and improving engineering workflows.
+                </p>
+                <p>
+                    I’ve optimized memory layouts for large-scale simulations, developed backend services that handle
+                    real-world complexity, and created tools that streamline day-to-day tasks for engineers. Beyond my
+                    professional work, I bring the same analytical mindset to swing trading and explore new ideas through
+                    game-tech projects.
+                </p>
+            </div>
+        </div>
+    </Section>
+
+    {/* SKILLS */}
+    <div class="container">
+        <SkillPills />
     </div>
 
-  </Section>
+    {/* PROJECTS */}
+    <Section id="projects" kicker="Work" title="Featured Projects" class="scroll-mt-24">
+        <div class="container">
+            <ProjectsGrid />
+        </div>
+    </Section>
 
-  <SkillPills />
-  <ProjectsGrid />
-  <Education/>
-  <Section id="publications" kicker="Scholar" title="Select Publications">
-    <!-- your list -->
-    <ResearchProfiles />
-    <Experience/>
-  </Section>
-  <Section id="contact" kicker="Let’s talk" title="Contact me">
-    <div class="grid md:grid-cols-2 gap-6">
-      <a href="mailto:bradn4@gmail.com" class="card p-5 hover:border-white/20">
-        <h3 class="font-semibold">Email</h3>
-        <p class="text-zinc-300">bradn4@gmail.com</p>
-      </a>
-      <a href="https://www.linkedin.com/in/brad-northern/" class="card p-5 hover:border-white/20">
-        <h3 class="font-semibold">LinkedIn</h3>
-        <p class="text-zinc-300">brad-northern</p>
-      </a>
-      <a href="https://x.com/ZeroDarkDev" class="card p-5 hover:border-white/20">
-        <h3 class="font-semibold">X (Twitter)</h3>
-        <p class="text-zinc-300">@ZeroDarkDev</p>
-      </a>
-    </div>
-  </Section>
-</div>
+    {/* EXPERIENCE */}
+    <Section id="experience" kicker="History" title="Experience" class="scroll-mt-24">
+        <div class="container">
+            <Experience />
+        </div>
+    </Section>
+
+    {/* EDUCATION */}
+    <Section id="education" kicker="Academic" title="Education" class="scroll-mt-24">
+        <div class="container">
+            <Education />
+        </div>
+    </Section>
+
+    {/* PUBLICATIONS */}
+    <Section id="publications" kicker="Scholar" title="Select Publications" class="scroll-mt-24">
+        <div class="container">
+            <ResearchProfiles />
+        </div>
+    </Section>
+    {/* CONTACT */}
+    <Section id="contact" kicker="Let’s talk" title="Contact me" class="scroll-mt-24">
+        <div class="container">
+            <div class="grid md:grid-cols-2 gap-6">
+                <a
+                        href="mailto:bradn4@gmail.com"
+                        class="rounded-2xl border border-white/10 bg-[#10131a]/90 p-5 hover:border-accent-400/50 transition"
+                >
+                    <h3 class="font-semibold">Email (Personal)</h3>
+                    <p class="text-zinc-300">bradn4@gmail.com</p>
+                </a>
+
+                <a
+                        href="mailto:banorthern42@tntech.edu"
+                        class="rounded-2xl border border-white/10 bg-[#10131a]/90 p-5 hover:border-accent-400/50 transition"
+                >
+                    <h3 class="font-semibold">Email (University)</h3>
+                    <p class="text-zinc-300">banorthern42@tntech.edu</p>
+                </a>
+
+                <a
+                        href="https://www.linkedin.com/in/brad-northern/"
+                        class="rounded-2xl border border-white/10 bg-[#10131a]/90 p-5 hover:border-accent-400/50 transition"
+                >
+                    <h3 class="font-semibold">LinkedIn</h3>
+                    <p class="text-zinc-300">brad-northern</p>
+                </a>
+
+                <a
+                        href="https://x.com/ZeroDarkDev"
+                        class="rounded-2xl border border-white/10 bg-[#10131a]/90 p-5 hover:border-accent-400/50 transition"
+                >
+                    <h3 class="font-semibold">X (Twitter)</h3>
+                    <p class="text-zinc-300">@ZeroDarkDev</p>
+                </a>
+            </div>
+        </div>
+    </Section>
+
+
+
+    {/* Tiny scroll-reveal for a “not boring” feel */}
+    <script>
+        const els = document.querySelectorAll("section .container > *");
+        els.forEach((el, i) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(6px)";
+            el.style.transition = "opacity .5s ease, transform .5s ease";
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        requestAnimationFrame(() => {
+                            el.style.opacity = "1";
+                            el.style.transform = "translateY(0)";
+                        });
+                        io.unobserve(el);
+                    }
+                });
+            }, { rootMargin: "0px 0px -10% 0px" });
+            io.observe(el);
+        });
+    </script>
 </Base>

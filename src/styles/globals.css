@@ -2,25 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
     :root { color-scheme: dark; }
-    html { font-size: 18px; } /* makes 100% zoom feel closer to your preferred 150% */
+    html { font-size: 18px; } /* makes 100% zoom feel comfy */
     body {
-        @apply bg-bg text-text antialiased;
+        @apply bg-[#0b0d12] text-[#e6e9ef] antialiased;
         background:
                 radial-gradient(1200px 800px at 10% -10%, #111620 0%, #0b0d12 60%),
                 linear-gradient(180deg, #0b0d12 0%, #0a0d13 100%),
-                theme('backgroundImage.radial-fade');
+                radial-gradient(1200px 600px at 50% -200px, rgba(6,182,212,0.12), transparent);
     }
-    a { @apply text-accent-300 hover:text-accent-200 transition; }
 }
 
+/* wave animation for the emoji */
 @layer utilities {
-    .section { @apply py-16 lg:py-20; }
-    .heading-grad {
-        @apply bg-clip-text text-transparent;
-        background-image: linear-gradient(90deg, #e6e9ef, theme(colors.accent.400));
+    @keyframes wave {
+        0%,100% { transform: rotate(0deg); }
+        20% { transform: rotate(14deg); }
+        40% { transform: rotate(-8deg); }
+        60% { transform: rotate(14deg); }
+        80% { transform: rotate(-4deg); }
     }
+    .animate-wave { animation: wave 1.75s ease-in-out infinite; }
 }
 /* smooth scrolling + nicer selection */
 :root { scroll-behavior: smooth; }
